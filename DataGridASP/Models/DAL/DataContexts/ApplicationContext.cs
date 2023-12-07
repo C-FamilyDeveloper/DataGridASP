@@ -1,6 +1,6 @@
 ﻿using DataGridASP.Models.DAL.DataEntities;
-using Microsoft.EntityFrameworkCore;
 using Faker;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataGridASP.Models.DAL.DataContexts
 {
@@ -14,7 +14,7 @@ namespace DataGridASP.Models.DAL.DataContexts
             if (!DataEntities.Any())
             {
                 Random random = new();
-                for (int i = 0; i < 100000; i++) 
+                for (int i = 0; i < 100000; i++)
                 {
                     DataEntities.Add(new DataEntity
                     {

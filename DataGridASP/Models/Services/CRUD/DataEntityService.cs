@@ -7,7 +7,7 @@ namespace DataGridASP.Models.Services.CRUD
     {
         private readonly ApplicationContext applicationContext;
 
-        public DataEntityService(ApplicationContext applicationContext) 
+        public DataEntityService(ApplicationContext applicationContext)
         {
             this.applicationContext = applicationContext;
         }
@@ -19,10 +19,10 @@ namespace DataGridASP.Models.Services.CRUD
         {
             var entities = await applicationContext.DataEntities.AsNoTracking()
                 .Skip(filter.PageSize * filter.Page).Take(filter.PageSize).ToListAsync();
-            return entities.Select(i=>new Data 
+            return entities.Select(i => new Data
             {
                 UserName = i.FullName,
-                DateTime = i.DateTime 
+                DateTime = i.DateTime
             }).ToList();
         }
     }

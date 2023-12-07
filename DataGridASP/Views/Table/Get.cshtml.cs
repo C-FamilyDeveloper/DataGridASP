@@ -1,7 +1,5 @@
 using DataGridASP.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Diagnostics;
 
 namespace DataGridASP.Views.Table
 {
