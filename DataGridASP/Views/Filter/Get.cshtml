@@ -1,0 +1,22 @@
+﻿@model DataGridASP.Models.Filter
+@{
+    @using (Html.BeginForm("Get", "Table", FormMethod.Get))
+    {
+        <input type="hidden" value="@Model"/>
+        <table>
+            <tr>
+                <td><p>Количество данных на странице : </p></td>
+                <td><input type="number" min="1"  required name="PageSize"/> </td>
+            </tr>
+            <tr>
+                <td><p>Страница : </p></td>
+                <td><input type="number" min="1" required name="Page" /> </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Открыть" /> </td>
+                <td></td>
+            </tr>
+        </table>
+    }
+}
+

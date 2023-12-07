@@ -1,0 +1,64 @@
+﻿@using DataGridASP.Models
+@model PageData
+<style>
+    .button {
+        -webkit-appearance: button;
+        border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+        border-style: solid;
+        border-width: 1px;
+        padding: 1px 7px 2px;
+        text-rendering: auto;
+        color: initial;
+        display: inline-block;
+        text-align: start;
+        margin: 0em;
+        font: 400 11px system-ui;
+    }
+</style>
+<table border=1 frame=box rules=all>
+<caption>Записи</caption>
+<tr>
+    <th>Имя пользователя</th>
+    <th>Дата и время</th>
+</tr>
+    @foreach (var i in Model.Data)
+    {
+        <tr>
+            <td>@i.UserName</td>
+            <td>@i.DateTime</td>
+        </tr>
+    }
+</table>
+@if (!Model.CurrentPage.IsFirst())
+{
+    @Html.ActionLink("Первая страница" ,"Get", new
+        {
+            pagesize = Model.Data.Count(),
+            page = 1
+        }, new {@class = "button"})
+}
+@if (Model.CurrentPage.IsCanGoPrevious())
+{
+    @Html.ActionLink("Предыдущая страница" ,"Get", new
+    {
+        pagesize = Model.Data.Count(),
+        page = Model.CurrentPage.CurrentPage - 1
+    }, new {@class = "button"})
+}
+@if (Model.CurrentPage.IsCanGoNext())
+{
+    @Html.ActionLink("Следующая страница" ,"Get", new
+    {
+        pagesize = Model.Data.Count(),
+        page = Model.CurrentPage.CurrentPage + 1
+    }, new {@class = "button"})
+
+    @Html.ActionLink("Последняя страница" ,"Get", new
+    {
+        pagesize = Model.Data.Count(),
+        page = Model.CurrentPage.PageCount-1
+    }, new {@class = "button"})
+}
+@Html.ActionLink("К настройкам","Get", "Filter", null, new {@class = "button"})
+
+
